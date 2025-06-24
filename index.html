@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base44 - לינקים ופרומפטים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #bbbbbb;
+            --background-color: #0d0221;
+            --card-background: rgba(26, 9, 58, 0.7);
+            --accent-color: #26f7fd;
+            --glow-color: rgba(38, 247, 253, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #canvas-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none; /* Fix for button click issue */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 10px 20px;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .header-link:hover {
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .link-cube {
+            background: var(--card-background);
+            border: 1px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .link-cube:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .link-cube p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        button, .copy-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+        }
+
+        button:hover, .copy-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .prompt-card {
+            background: var(--card-background);
+            border: 1px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .code-block-wrapper {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2; /* Ensure button is on top */
+        }
+
+        pre {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            padding-top: 3rem; /* Space for the button */
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--secondary-color);
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        pre::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        pre::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 20px;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: white;
+            padding: 12px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 100;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float::before {
+            content: '💬';
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .whatsapp-text {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+        }
+
+        .whatsapp-text strong {
+            font-weight: 700;
+        }
+
+        .whatsapp-text span {
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .whatsapp-float {
+                bottom: 15px;
+                left: 15px;
+            }
+            .whatsapp-text span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-background"></canvas>
+    
+    <div class="container">
+        <header>
+            <a href="https://base44.com/?via=ariel-aizebshtat" target="_blank" class="header-link">הרשמה ל-base44</a>
+            <h1>לינקים שימושיים לשימוש במערכת base44</h1>
+        </header>
+
+        <main>
+            <section id="links">
+                <h2>מחולל הפרומפטים</h2>
+                <div class="link-cube">
+                    <p>לינק למחולל הפרומפטים ל-base44</p>
+                    <button onclick="window.open('https://chatgpt.com/g/g-6857dea0d45881919e0576c1480d4210-base44-prompter', '_blank')">פתח בחלון חדש</button>
+                </div>
+            </section>
+
+            <section id="prompts">
+                <h2>פרומפטים לשימוש</h2>
+
+                <div class="prompt-card">
+                    <h3>האפליקציה הראשונה: יועץ AI לעסקים קטנים</h3>
+                    <div class="code-block-wrapper">
+                        <button class="copy-btn" data-clipboard-target="#prompt1">העתק קוד</button>
+                        <pre id="prompt1"><code>**שם האפליקציה:** יועץ AI אוטומטי לעסקים קטנים
+
+**שפה:** עברית בלבד  
+**פלטפורמה:** אפליקציית ווב  
+**קהל יעד:** בעלי עסקים קטנים, ישראל
+
+### דרישות ליבה:
+
+1. **שיחה ראשונית:** שאל את המשתמש (בעל העסק) שלוש שאלות:  
+   - תחום העסק  
+   - קהל יעד  
+   - מטרה שיווקית
+   ניתן להוסיף שאלות למידת עסק (שם עסק, תיאור, כתובת) בשימוש ראשון.
+2. **תן 3 הצעות שיווקיות ממוקדות, כתובות בעברית תקנית (Headline + Body קצרה לכל הצעה).**
+3. **צור הצעת פוסטר/תמונה לקמפיין שיווקי:**  
+   - בנה prompt (באנגלית) ל-AI ליצירת תמונה מתאימה  
+   - הצג את התמונה המתקבלת לצד ההצעות
+4. **אפשר הורדה של התוצרים (PDF/תמונה/טקסט) ושיתוף בווטסאפ ישירות מהממשק.**
+5. **שמור היסטוריית המלצות לכל משתמש, עם אפשרות חיפוש והורדה מחדש.**
+
+### דרישות נוספות:
+- ללא עיצוב ממותג, UI בסיסי, תמיכה מלאה בעברית.
+- תמיכה רק בווטסאפ (אינטגרציה API; אופציונלי שליחה ידנית).
+- אין צורך באימות משתמש חזק (לפי הצורך במוצר).
+- כל המלצה, טקסט ותמונה – בעברית בלבד (מלבד prompt לאיור).
+
+### הערות:
+- הבוט צריך ללמוד את העסק על בסיס פרופיל ראשוני.
+- דגש על מהירות תפעול, קלות, ערך מיידי למשתמש.
+- MVP – דגש על מינימום פיצ'רים קריטיים, עם אופציה להרחבה בהמשך.</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card">
+                    <h3>האפליקציה השנייה: PIXMIND STUDIO – גן שעשועים לילדים</h3>
+                     <div class="code-block-wrapper">
+                        <button class="copy-btn" data-clipboard-target="#prompt2">העתק קוד</button>
+                        <pre id="prompt2"><code># PIXMIND STUDIO – גן שעשועים לילדים  
+### אפליקציה ליצירת ספרי ילדים דיגיטליים מותאמים אישית
+
+---
+
+## 1. סקירה כללית של המוצר
+
+פיתחו אפליקציית ווב רספונסיבית בשם **PIXMIND STUDIO – גן שעשועים לילדים**, שתאפשר למשתמשים ליצור, לעצב ולהפיק ספרי ילדים דיגיטליים ואינטראקטיביים בהתאמה אישית. כל ספר יכלול סיפור ייחודי ואיורים מקוריים הנוצרים אוטומטית לפי נתוני הילד/ה, נושא, סגנון איור וטון סיפור.  
+האפליקציה תשלב בין מנוע שפה (GPT-4/דומה) למנוע יצירת תמונה (DALL-E/דומה) ותאפשר שמירה, עריכה, שיתוף, הורדה כ-PDF, וניהול ספרים בחשבון בענן.
+
+---
+
+## 2. קהל יעד
+
+- הורים, סבים/סבתות, אנשי חינוך, גננות
+- ילדים (כולל ילדים עם צרכים מיוחדים)
+- קהל עברי ובינלאומי (עברית, אנגלית, תכנון לשפות נוספות)
+
+---
+
+## 3. פיצ'רים עיקריים
+
+### 3.1 טופס התאמה אישית
+- שם הילד/ה (טקסט חופשי)
+- מין הילד/ה (בן/בת/לא מוצהר)
+- בחירת נושא לסיפור (רשימה + "אחר")
+- בחירת סגנון איור (לדוג' קומיקס, ריאליסטי, גזירי נייר, צבעי מים, אנימציה)
+- בחירת טון סיפור (משעשע, הרפתקני, פיוטי, חינוכי)
+- בחירת שפה (עברית/אנגלית/תמיכה עתידית בשפות נוספות)
+
+### 3.2 יצירת הספר
+- שליחת פרטים למודל שפה ליצירת סיפור ילדים בהתאמה אישית
+- פיצול הסיפור לעמודים/פרקים (5-12 עמודים ממוצע)
+- שליחת הוראות למודל תמונה לכל עמוד (לפי תוכן וסגנון)
+- הצגת תצוגה מקדימה בעמודים עם דפדוף
+
+### 3.3 ניהול ספרים וחשבון משתמש
+- הרשמה (מייל, גוגל, פייסבוק – אופציונלי ב-MVP)
+- שמירת ספרים בענן – צפייה, עריכה, מחיקה, שיתוף
+- הורדה כקובץ PDF להדפסה/שיתוף
+
+---
+
+## 4. UX/UI & עיצוב
+
+- עיצוב צבעוני, ידידותי לילדים (פסטלים, רקעים בהירים, אייקונים גדולים)
+- הצגת דוגמאות סגנון איור לבחירה
+- RTL מלא בעברית, התאמה לאנגלית
+- נגישות: WCAG 2.1 AA – הגדלת טקסט, ניגודיות, ALT, ניווט מקלדת, אופציה לקריינות
+- טקסטים ומיקרו-קופי ברורים בכל שלב (""התחל", ""צור ספר", ""הורד PDF", ""שמור", ""ערוך" וכו')
+- התראה על שדות חסרים, חיווי טעינה ברור
+
+---
+
+## 5. טכנולוגיה ואינטגרציות
+
+- פלטפורמה: Web, רספונסיבי (מובייל וטאבלט)
+- אינטגרציה ל-API של מודל שפה (GPT-4/3.5) ליצירת סיפור
+- אינטגרציה ל-API של מודל תמונה (DALL-E, Midjourney וכו') ליצירת איורים
+- שמירה בענן (Firebase, Cloud Storage/DB)
+- הפקת PDF אוטומטית מהספר (כולל טקסט ואיורים)
+- אפשרות להרחבת מערכת תשלומים (Stripe/PayPal) בעתיד
+- מערכת סטטיסטיקות (כמות ספרים, משתמשים, נושאים פופולריים)
+- גיבוי אוטומטי לנתונים
+
+---
+
+## 6. תיעוד ודוגמאות טקסט
+
+- טקסט פתיחה:  
+  ""ברוכים הבאים ל-PIXMIND STUDIO – גן שעשועים לילדים! כאן תוכלו ליצור ספר ילדים ייחודי ומאויר במיוחד עבור הילד/ה שלכם.""
+- הודעות מערכת:  
+  - ""הספר נוצר בהצלחה!""  
+  - ""אנא מלא את כל השדות.""  
+  - ""הספר נשמר בחשבונך.""  
+  - ""שגיאה. נסה שוב.""  
+
+---
+
+## 7. נגישות ופרטיות
+
+- נגישות: כל האלמנטים נגישים – טקסטים קריאים, ALT, ניווט מקלדת, אופציית קריינות, אפשרות הגדלת טקסט
+- פרטיות: שמירה על פרטיות ילדים; ספרים מוצפנים, נגישים רק למשתמש; אפשרות מחיקת ספרים וחשבונות
+
+---
+
+## 8. סקיילביליות ודומיין
+
+- MVP יתארח על דומיין כללי, אפשרות דומיין פרטי בהמשך
+- תמיכה בעשרות משתמשים סימולטנית, הכנה לסקיילינג
+- פריסה על תשתית סקיילבילית (Vercel/Cloud Run/AWS)
+- דגש על מהירות טעינה, UX קל ונוח לכל גיל
+
+---
+
+## 9. UX Flow
+
+1. דף בית – הסבר וכפתור ""צור ספר""
+2. טופס פרטים – שם, מין, נושא, סגנון, טון, שפה
+3. יצירת ספר – שליחה ל-AI
+4. תצוגה מקדימה – מעבר עמודים
+5. הורדה/שמירה/שיתוף
+6. ניהול ספרים – צפייה, עריכה, מחיקה, שיתוף
+
+---
+
+## 10. הערות הנדסיות והנחיות ל-AI
+
+- לשמור על מודולריות מלאה (כל פיצ'ר כיחידה)
+- להקפיד על תרגום מלא לכל רכיב (כולל RTL/לוקליזציה מלאה)
+- תיעוד פנימי לכל מסך/רכיב
+- הכנה להתרחבות עתידית (הוספת פיצ'רים, שפות, תשלומים)
+- חוויית משתמש פשוטה, אינטואיטיבית גם לילדים ומבוגרים לא טכנולוגיים
+- כל קוד ותשתית ניתנים לתחזוקה קלה
+
+---
+
+## 11. שלבי עבודה
+
+- שלב ראשון: MVP תומך עברית ואנגלית, ספרי ילדים בהתאמה אישית עם אפשרות הורדה ושיתוף
+- שלב שני: שיפור נגישות, תוספת שפות, מערכת תשלומים, עיצוב כריכות/הקדשות
+- שלב שלישי: אינטגרציה עם בתי דפוס, גיימיפיקציה, העלאת תמונות משתמש
+
+---
+
+## **סיכום והנחיית פרומפט**
+
+> **""בנו עבורי אפליקציית ווב בשם PIXMIND STUDIO – גן שעשועים לילדים, ליצירת ספרי ילדים דיגיטליים מותאמים אישית, ע"פ כל דרישות המפרט המפורטות למעלה: כולל פיצ'רים, UX, נגישות, אינטגרציות, הפקה אוטומטית של סיפור ואיורים, שמירה בענן, תצוגה מוקדמת, עיצוב צבעוני, תיעוד פנימי והכנה להתרחבות עתידית. יש לשמור על איכות קוד גבוהה, מודולריות וידידותיות למשתמש."**</code></pre>
+                    </div>
+                </div>
+
+                <div class="prompt-card">
+                    <h3>האפליקציה השלישית: PIXMIND STUDIO – Landing Page AI Generator</h3>
+                    <div class="code-block-wrapper">
+                        <button class="copy-btn" data-clipboard-target="#prompt3">העתק קוד</button>
+                        <pre id="prompt3"><code># PIXMIND STUDIO – Landing Page AI Generator
+# Detailed prompt for Base44 AI App Builder
+# אפיון סופר-מפורט לבניית אפליקציית יצירת דפי נחיתה אוטומטיים בעזרת AI
+
+## General Overview
+- **App Name:** PIXMIND STUDIO – AI Landing Page Builder
+- **Platform:** Web Application (Responsive, Mobile-optimized)
+- **Primary Language:** Hebrew (RTL) & English
+- **Target Users:** SMBs, entrepreneurs, freelancers, marketers, agencies
+
+---
+
+## 1. User Stories & Core Use Cases
+
+- **As a user**, I want to enter my business name, landing page topic, and my target audience so the AI can generate content specifically tailored to my needs.
+- **As a user**, I want to select a design style (modern, classic, colorful, minimal, etc.) and a tone of voice (professional, friendly, playful, convincing, etc.) for my landing page.
+- **As a user**, I want to preview the generated landing page live, switch between different design styles or tones, and see instant updates.
+- **As a user**, I want to save, edit, download (HTML/CSS), or publish my landing page.
+- **As a user**, I want a dashboard to manage all my created pages and edit or duplicate them.
+- **As a user**, I want the content (headlines, CTAs, testimonials, contact forms, visuals) to be auto-generated and visually appealing.
+
+---
+
+## 2. Features & Functional Requirements
+
+### 2.1. Onboarding & Authentication
+- Simple onboarding wizard with guided steps.
+- User authentication: Google & Email/password login.
+- Password reset flow.
+- Support for guest mode (optional).
+
+### 2.2. Landing Page Generation
+- Input fields:
+    - Business Name (mandatory)
+    - Landing Page Topic/Goal (mandatory)
+    - Short Business Description (optional)
+    - Target Audience (age, profession, pain points)
+- Style Selection:
+    - Multiple design themes (modern, colorful, classic, minimal, startup, corporate)
+    - Branding: custom color palettes, font choices
+- Tone of Voice:
+    - Professional, friendly, playful, persuasive, formal, creative
+- AI-Generated Content:
+    - Main headline (H1), subheadline, intro paragraph
+    - Unique selling proposition (USP) section
+    - Calls-to-action (CTA)
+    - Testimonials/reviews (optionally generated)
+    - FAQ section (auto-generated, optional)
+    - Contact form (fields: name, email, phone, message)
+    - Social proof elements (logos, partner brands)
+    - Stock images, AI-generated graphics/icons
+- Multi-language support (initially Hebrew & English, scalable to others)
+
+### 2.3. Live Preview & Editing
+- Real-time preview pane showing exactly how the page will look
+- Ability to toggle between different design themes & tones instantly
+- Editable sections after AI generation (text & images)
+
+### 2.4. Dashboard & Page Management
+- User dashboard ("My Pages")
+- List, edit, duplicate, or delete generated landing pages
+- Quick access to download or publish
+
+### 2.5. Export & Publishing
+- Export page as HTML/CSS (zip download)
+- Option to host the page temporarily (Base44 hosting / custom domain support in future)
+- Shareable preview link
+
+### 2.6. Integrations (phase 2/future)
+- CRM integration (HubSpot, Salesforce, etc.)
+- Email marketing tools (Mailchimp, ActiveCampaign, etc.)
+- Google Analytics / Tag Manager
+- Zapier & webhook support
+
+### 2.7. Settings & Profile
+- Profile management
+- Language preference
+- Brand kit management (logos, color palettes, fonts)
+
+---
+
+## 3. UI/UX & Design Requirements
+
+- **Branding:** 
+    - Name: PIXMIND STUDIO
+    - Suggested slogan: ""הדרך המהירה, היצירתית והחכמה לדפי נחיתה שממירים""
+- **Design:** 
+    - Modern, clean, creative "studio" vibe
+    - Multiple template choices; visually distinct
+    - RTL (Hebrew) support with mirrored layout
+    - Accessibility: WCAG AA compliance
+    - High-contrast, clear fonts, adequate padding & spacing
+    - Fun, lightweight, animated micro-interactions (optional)
+    - Simple step-by-step creation process
+    - Color palette picker and preview
+    - Option to upload brand logo
+
+---
+
+## 4. Technical/Architecture Requirements
+
+- **Frontend:** 
+    - React (preferred), fully responsive, RTL/LTR toggle
+    - Live preview engine for landing pages
+    - Forms validation & error handling
+- **Backend/AI:** 
+    - AI service for text & visual generation (OpenAI API / Stability AI / etc.)
+    - User/project management
+    - Secure storage (cloud, e.g., AWS S3/Firebase)
+    - Scalable for future integrations
+- **Data & Security:**
+    - GDPR compliance
+    - Secure user authentication & data encryption
+    - Private storage for user-generated content
+    - Audit logs (optional, for admin)
+
+---
+
+## 5. Scalability & Deployment
+
+- **Initial Phase:** MVP with all key features above, deployed on scalable cloud infrastructure.
+- **Future:** 
+    - Custom domain publishing
+    - White-label options
+    - Bulk page creation for agencies
+    - Collaboration tools (multi-user/team)
+
+- **Hosting:** 
+    - Base44 platform hosting (default), with potential to migrate/export.
+    - Staging & production environments.
+
+---
+
+## 6. Example Workflow
+
+1. User registers/logs in (or continues as guest).
+2. User enters business info, page topic, target audience.
+3. User selects design style, color palette, and tone of voice.
+4. User clicks "Generate Page" – AI produces full landing page (content + design).
+5. Live preview loads; user can tweak style/tone/content, regenerate sections as needed.
+6. User saves, downloads, publishes, or shares page.
+7. User can always return to "My Pages" dashboard to manage/edit/export landing pages.
+
+---
+
+## 7. Special Requirements & Best Practices
+
+- Ensure all generated text/images are unique and copyright-safe.
+- No sensitive user data stored without encryption.
+- Fast load times, optimized assets.
+- Accessibility first (keyboard nav, color contrast, alt-text for images).
+- Responsive customer support/help center (phase 2).
+- Clear documentation for users (help guides, onboarding).
+- All user actions are undoable where possible (soft delete, version history - optional).
+- Include tips for writing effective landing page content.
+
+---
+
+## 8. Success Criteria
+
+- User can create a professional landing page in <5 minutes, with no prior design/copywriting skills.
+- All generated pages look modern and visually appealing.
+- No technical knowledge required to operate.
+- Supports multiple audiences/industries out-of-the-box.
+
+---
+
+## 9. Stretch Goals (Optional/Future)
+
+- AI chatbot assistance during page creation
+- Integrated A/B testing tool
+- AI analytics & performance suggestions
+- Integration with payment gateways (for lead gen)
+- Marketplace for premium templates/assets
+
+---
+
+# === END OF PROMPT ===
+# This prompt is ready for copy-paste into Base44 or any advanced AI app builder.</code></pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <a href="https://chat.whatsapp.com/LvyuQ95HSANLsPTzMZxZPY" target="_blank" class="whatsapp-float">
+        <div class="whatsapp-text">
+            <strong>הצטרפו לקבוצת הוואטסאפ שלנו!</strong>
+            <span>לעוד וובינרים ותכנים מטורפים!</span>
+        </div>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Canvas Animation ---
+            const canvas = document.getElementById('canvas-background');
+            const ctx = canvas.getContext('2d');
+
+            let particles = [];
+            const particleCount = 100;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            // Particle class
+            class Particle {
+                constructor(x, y, size, color, speedX, speedY) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.color = color;
+                    this.speedX = speedX;
+                    this.speedY = speedY;
+                }
+
+                // Method to draw individual particle
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+
+                // Method to update particle's position
+                update() {
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.speedX = -this.speedX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.speedY = -this.speedY;
+                    }
+
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.draw();
+                }
+            }
+
+            // Create particle array
+            function init() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    let size = Math.random() * 2 + 1;
+                    let x = Math.random() * (canvas.width - size * 2) + size;
+                    let y = Math.random() * (canvas.height - size * 2) + size;
+                    let speedX = (Math.random() - 0.5) * 0.5;
+                    let speedY = (Math.random() - 0.5) * 0.5;
+                    let color = 'rgba(38, 247, 253, 0.5)';
+                    particles.push(new Particle(x, y, size, color, speedX, speedY));
+                }
+            }
+
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                }
+                connectParticles();
+                requestAnimationFrame(animate);
+            }
+            
+            // Function to connect particles with lines
+            function connectParticles() {
+                let opacityValue = 1;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
+                                     + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+                        
+                        if (distance < (canvas.width/7) * (canvas.height/7)) {
+                            opacityValue = 1 - (distance/20000);
+                            ctx.strokeStyle = `rgba(38, 247, 253, ${opacityValue})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                init();
+            });
+
+            resizeCanvas();
+            init();
+            animate();
+
+            // --- ClipboardJS Initialization ---
+            const clipboard = new ClipboardJS('.copy-btn');
+
+            clipboard.on('success', function(e) {
+                const originalText = e.trigger.innerHTML;
+                e.trigger.innerHTML = 'הועתק!';
+                e.trigger.style.backgroundColor = '#26f7fd';
+                e.trigger.style.color = '#0d0221';
+
+                setTimeout(() => {
+                    e.trigger.innerHTML = originalText;
+                    e.trigger.style.backgroundColor = 'transparent';
+                    e.trigger.style.color = '#26f7fd';
+                }, 2000);
+
+                e.clearSelection();
+            });
+
+            clipboard.on('error', function(e) {
+                e.trigger.innerHTML = 'שגיאה בהעתקה';
+                setTimeout(() => {
+                    e.trigger.innerHTML = 'העתק קוד';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html> 
