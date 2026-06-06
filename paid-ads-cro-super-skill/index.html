@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paid Ads CRO Super Skill | דף נחיתה שמוכר את מי שבנה אותו</title>
+    <meta
+      name="description"
+      content="סקיל קופי, CRO, פאנלים, מיתוג ועיצוב דפי נחיתה שמייצר דפים שמכוונים לסליקה. הדף הזה נוצר על ידי הסקיל שהוא מוכר."
+    />
+    <meta property="og:title" content="הדף הזה נוצר על ידי הסקיל שהוא מוכר" />
+    <meta
+      property="og:description"
+      content="Paid Ads CRO Super Skill: חבילת סקילס לדפי נחיתה, קופי, פאנלים, מיתוג, עיצוב ו-CRO במחיר 579 ש״ח."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      :root {
+        --ink: #101410;
+        --panel: #151914;
+        --deep: #08100d;
+        --paper: #fbf7ef;
+        --muted: #c7c0b3;
+        --muted-dark: #665f54;
+        --gold: #d8ad5f;
+        --gold-2: #f2d18c;
+        --green: #1e6c53;
+        --green-2: #37a878;
+        --clay: #9b5742;
+        --line: rgba(216, 173, 95, 0.28);
+        --white: #fffdf8;
+        --shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Assistant", "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 32px));
+        margin-inline: auto;
+      }
+
+      .topbar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(8, 16, 13, 0.82);
+        backdrop-filter: blur(18px);
+        color: var(--white);
+      }
+
+      .nav {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .brand i {
+        color: var(--gold-2);
+      }
+
+      .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: rgba(255, 253, 248, 0.78);
+        font-size: 0.94rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        font-weight: 850;
+        white-space: nowrap;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--gold-2), var(--gold));
+        color: #191207;
+        box-shadow: 0 14px 34px rgba(216, 173, 95, 0.26);
+      }
+
+      .button.ghost {
+        border-color: rgba(255, 253, 248, 0.25);
+        color: var(--white);
+      }
+
+      .hero {
+        min-height: 96vh;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(8, 16, 13, 0.96) 0%, rgba(8, 16, 13, 0.82) 42%, rgba(8, 16, 13, 0.2) 76%),
+          url("assets/hero-ai-conversion-engine.jpg") center / cover no-repeat;
+        padding: 132px 0 76px;
+        display: grid;
+        align-items: center;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 130px;
+        background: linear-gradient(0deg, var(--paper), rgba(251, 247, 239, 0));
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: minmax(0, 650px) 1fr;
+        gap: 40px;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(216, 173, 95, 0.42);
+        background: rgba(216, 173, 95, 0.11);
+        color: var(--gold-2);
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 5.6vw, 6.4rem);
+        line-height: 0.98;
+        max-width: 880px;
+        margin-bottom: 22px;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        font-size: clamp(1.12rem, 2vw, 1.45rem);
+        color: rgba(255, 253, 248, 0.84);
+        max-width: 700px;
+        margin-bottom: 28px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .proof-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: rgba(255, 253, 248, 0.78);
+      }
+
+      .proof-row span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .price-card {
+        align-self: stretch;
+        border: 1px solid rgba(216, 173, 95, 0.35);
+        background: rgba(21, 25, 20, 0.76);
+        backdrop-filter: blur(18px);
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        max-width: 360px;
+        margin-inline-start: auto;
+      }
+
+      .price {
+        font-size: 4rem;
+        line-height: 1;
+        font-weight: 900;
+        color: var(--gold-2);
+        margin: 10px 0;
+      }
+
+      .price small {
+        font-size: 1.15rem;
+        color: var(--muted);
+      }
+
+      .price-card ul {
+        padding: 0;
+        margin: 18px 0 0;
+        list-style: none;
+        display: grid;
+        gap: 9px;
+        color: rgba(255, 253, 248, 0.82);
+      }
+
+      .price-card li {
+        display: flex;
+        gap: 10px;
+      }
+
+      .price-card li i {
+        color: var(--green-2);
+        margin-top: 5px;
+      }
+
+      section {
+        padding: 82px 0;
+      }
+
+      .section-head {
+        max-width: 780px;
+        margin-bottom: 34px;
+      }
+
+      .section-kicker {
+        color: var(--green);
+        font-weight: 900;
+        margin-bottom: 8px;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 3.8vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: 0;
+        margin-bottom: 16px;
+      }
+
+      .section-head p,
+      .text-large {
+        color: var(--muted-dark);
+        font-size: 1.12rem;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .card {
+        border: 1px solid rgba(16, 20, 16, 0.11);
+        background: var(--white);
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: 0 14px 40px rgba(36, 27, 13, 0.08);
+      }
+
+      .card i {
+        color: var(--gold);
+        font-size: 1.45rem;
+        margin-bottom: 16px;
+      }
+
+      .card h3 {
+        font-size: 1.28rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        color: var(--muted-dark);
+        margin-bottom: 0;
+      }
+
+      .dark {
+        color: var(--white);
+        background: var(--deep);
+      }
+
+      .dark .section-kicker {
+        color: var(--gold-2);
+      }
+
+      .dark .section-head p,
+      .dark .text-large {
+        color: rgba(255, 253, 248, 0.72);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .feature-image {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(216, 173, 95, 0.24);
+      }
+
+      .steps {
+        display: grid;
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .step-num {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(216, 173, 95, 0.14);
+        color: var(--gold-2);
+        font-weight: 900;
+        border: 1px solid rgba(216, 173, 95, 0.32);
+      }
+
+      .step p {
+        margin: 4px 0 0;
+        color: rgba(255, 253, 248, 0.68);
+      }
+
+      .formula-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .formula-strip span {
+        padding: 9px 13px;
+        border-radius: 999px;
+        background: rgba(30, 108, 83, 0.1);
+        border: 1px solid rgba(30, 108, 83, 0.22);
+        color: var(--green);
+        font-weight: 850;
+      }
+
+      .offer {
+        background: linear-gradient(135deg, #fcf8ef 0%, #f2e3c6 100%);
+      }
+
+      .offer-box {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .offer-main,
+      .checkout {
+        border-radius: 8px;
+        background: var(--white);
+        border: 1px solid rgba(16, 20, 16, 0.1);
+        box-shadow: 0 16px 54px rgba(52, 39, 16, 0.12);
+        padding: 30px;
+      }
+
+      .offer-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding: 0;
+        margin: 24px 0 0;
+        list-style: none;
+      }
+
+      .offer-list li {
+        display: flex;
+        gap: 10px;
+        color: var(--muted-dark);
+      }
+
+      .offer-list i {
+        color: var(--green);
+        margin-top: 5px;
+      }
+
+      .checkout {
+        background: #111712;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .checkout .button {
+        width: 100%;
+      }
+
+      .mini {
+        color: rgba(255, 253, 248, 0.66);
+        font-size: 0.96rem;
+        margin-bottom: 0;
+      }
+
+      .price-line {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255, 253, 248, 0.14);
+        padding-bottom: 12px;
+      }
+
+      .price-line strong {
+        color: var(--gold-2);
+      }
+
+      .faq {
+        display: grid;
+        gap: 12px;
+      }
+
+      details {
+        border: 1px solid rgba(16, 20, 16, 0.12);
+        background: var(--white);
+        border-radius: 8px;
+        padding: 18px 20px;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 850;
+      }
+
+      details p {
+        color: var(--muted-dark);
+        margin: 10px 0 0;
+      }
+
+      .final {
+        text-align: center;
+        color: var(--white);
+        background:
+          linear-gradient(180deg, rgba(8, 16, 13, 0.84), rgba(8, 16, 13, 0.98)),
+          url("assets/funnel-checkout-engine.jpg") center / cover no-repeat;
+      }
+
+      .final h2,
+      .final p {
+        margin-inline: auto;
+      }
+
+      .final p {
+        max-width: 720px;
+        color: rgba(255, 253, 248, 0.78);
+      }
+
+      footer {
+        padding: 28px 0;
+        color: rgba(255, 253, 248, 0.62);
+        background: #060907;
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 900px) {
+        .navlinks {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 112px;
+        }
+
+        .hero-grid,
+        .split,
+        .offer-box {
+          grid-template-columns: 1fr;
+        }
+
+        .price-card {
+          margin-inline-start: 0;
+          max-width: none;
+        }
+
+        .cards,
+        .offer-list {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 62px 0;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .wrap {
+          width: min(100% - 22px, 1120px);
+        }
+
+        .button {
+          width: 100%;
+          white-space: normal;
+          text-align: center;
+        }
+
+        .hero-actions {
+          align-items: stretch;
+        }
+
+        .price {
+          font-size: 3.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="wrap nav" aria-label="ניווט ראשי">
+        <a class="brand" href="#top" aria-label="Paid Ads CRO Super Skill">
+          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+          <span>Paid Ads CRO Super Skill</span>
+        </a>
+        <div class="navlinks">
+          <a href="#proof">ההוכחה</a>
+          <a href="#system">מה בפנים</a>
+          <a href="#offer">רכישה</a>
+        </div>
+        <a class="button primary" href="#offer">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          קנה ב־579 ש״ח
+        </a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+              הדגמת מכירה חיה, לא הבטחה באוויר
+            </div>
+            <h1>הדף הזה נוצר על ידי הסקיל שהוא מוכר.</h1>
+            <p class="lead">
+              אם סקיל יודע לבנות דף שמוכר אותו עצמו, הוא לא רק “כותב קופי”.
+              הוא מוכיח בזמן אמת שהוא מבין הצעה, כאב, הוכחה, עיצוב, CTA, אמון וסליקה.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#offer">
+                <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                אני רוצה את הסקיל ב־579 ש״ח
+              </a>
+              <a class="button ghost" href="#proof">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                תראה לי למה זה עובד
+              </a>
+            </div>
+            <div class="proof-row" aria-label="יתרונות מרכזיים">
+              <span><i class="fa-solid fa-check" aria-hidden="true"></i> קופי ישיר למכירה</span>
+              <span><i class="fa-solid fa-check" aria-hidden="true"></i> מבני פאנלים</span>
+              <span><i class="fa-solid fa-check" aria-hidden="true"></i> מיתוג ועיצוב</span>
+            </div>
+          </div>
+          <aside class="price-card" aria-label="מחיר וחבילת רכישה">
+            <span class="eyebrow">מחיר השקה</span>
+            <div class="price">579 <small>ש״ח</small></div>
+            <p>
+              חבילת סקילס אחת שמכוונת לבנות דפי נחיתה, פאנלים וקופי שמובילים לרכישה.
+            </p>
+            <ul>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>אסטרטגיית offer לפני כתיבה</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>סקשנים לפי התנגדויות</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>עיצוב שמחזק אמון וסמכות</span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="proof">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="section-kicker">האסטרטגיה הגאונית בפשטות</div>
+            <h2>לא מספרים לך שהסקיל יודע למכור. נותנים לו למכור את עצמו.</h2>
+            <p>
+              רוב דפי המכירה מדברים על “יכולות”. הדף הזה עושה משהו יותר חזק:
+              הוא הופך את המוצר להוכחה. כל כותרת, כל סקשן, כל כפתור וכל מבנה בעמוד
+              הם הדגמה של מה שהסקיל יודע לעשות בשבילך.
+            </p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+              <h3>ההוכחה היא המוצר</h3>
+              <p>
+                במקום להבטיח “אני בונה דפים ממירים”, הסקיל מראה דף מכירה בנוי,
+                מנומק ומכוון לפעולה אחת: רכישה.
+              </p>
+            </article>
+            <article class="card">
+              <i class="fa-solid fa-route" aria-hidden="true"></i>
+              <h3>העמוד מוביל לסליקה</h3>
+              <p>
+                המסלול ברור: כאב, סקרנות, מנגנון, הצעה, מחיר, הפחתת סיכון ו־CTA
+                שחוזר בדיוק כשהמבקר מוכן.
+              </p>
+            </article>
+            <article class="card">
+              <i class="fa-solid fa-gem" aria-hidden="true"></i>
+              <h3>המותג מרגיש יקר</h3>
+              <p>
+                עיצוב פרימיום, קונטרסט, היררכיה, אייקונים ותמונות מקוריות מייצרים
+                תחושה שמדובר בכלי רציני, לא בעוד prompt גנרי.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="system" class="dark">
+        <div class="wrap split">
+          <div class="feature-image">
+            <img
+              src="assets/funnel-checkout-engine.jpg"
+              alt="מנוע AI שמחבר מודעה, דף נחיתה, הוכחות וצ׳קאאוט לפאנל אחד"
+              width="1200"
+              height="914"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <div class="section-kicker">מה הסקיל עושה בפועל</div>
+            <h2>הוא לא מתחיל מכותרת. הוא מתחיל מהסיבה שאדם ישלם.</h2>
+            <p class="text-large">
+              הסקיל מנתח קהל, מקור תנועה, רמת מודעות, הצעה, התנגדויות, אמון,
+              הוכחות ועיצוב. רק אז הוא בונה דף שמרגיש כאילו כל פיקסל שם כדי לקרב את המבקר להחלטה.
+            </p>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                  <strong>מחדד הצעה</strong>
+                  <p>מי הקהל, מה התוצאה, למה עכשיו, ומה ההבדל בין “נחמד” לבין “אני חייב את זה”.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                  <strong>בונה מסלול שכנוע</strong>
+                  <p>Hero, כאב, מנגנון, offer stack, הוכחות, התנגדויות, מחיר, FAQ ו־CTA.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                  <strong>מעצב אמון</strong>
+                  <p>מותג, היררכיה, טיפוגרפיה, צבעים, תמונות, אייקונים ותנועה שמשרתים מכירה.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div class="section-kicker">נוסחאות, אבל עם שיקול דעת</div>
+            <h2>הוא מכיר את השיטות. החוכמה היא לדעת מתי להשתמש בכל אחת.</h2>
+            <p>
+              AIDA טוב לפתיחה. PAS טוב לכאב. PASTOR טוב לסיפור והצעה. 4U טוב לכותרות.
+              אבל דף שממיר לא בנוי מנוסחה אחת. הוא בנוי מרצף החלטות.
+            </p>
+            <div class="formula-strip" aria-label="נוסחאות קופי">
+              <span>AIDA</span>
+              <span>PAS</span>
+              <span>PASTOR</span>
+              <span>BAB</span>
+              <span>4U</span>
+              <span>QUEST</span>
+              <span>FAB</span>
+              <span>Hook → Story → Offer</span>
+            </div>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+              <h3>קופי שמוכר בלי לצעוק</h3>
+              <p>
+                כותרות חדות, הבטחות ספציפיות, יתרונות שמתורגמים לתוצאה, ו־CTA שמרגיש כמו הצעד ההגיוני הבא.
+              </p>
+            </article>
+            <article class="card">
+              <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+              <h3>טיפול בפחד לפני התשלום</h3>
+              <p>
+                הסקיל מחפש איפה המבקר מפחד: מחיר, זמן, אמינות, מורכבות, “האם זה מתאים לי” ומענה אמיתי לכל אחד.
+              </p>
+            </article>
+            <article class="card">
+              <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+              <h3>מובייל לפני הכל</h3>
+              <p>
+                כי רוב הרכישות והפניות לא קורות בתצוגת desktop מושלמת, אלא במסך קטן עם סבלנות קצרה.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="offer" class="offer">
+        <div class="wrap offer-box">
+          <div class="offer-main">
+            <div class="section-kicker">ההצעה</div>
+            <h2>קבל את הסקיל שבנה את הדף שאתה קורא עכשיו.</h2>
+            <p class="text-large">
+              זה סקיל־על לדפי נחיתה, פאנלים, קופי, מיתוג, עיצוב ו־CRO. הוא נבנה כדי לקחת רעיון,
+              מוצר או הצעה ולהפוך אותם לדף שמוביל לפעולה ברורה.
+            </p>
+            <ul class="offer-list">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>מבני דפי נחיתה לפי סוג מוצר וקהל</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>כתיבת Hero, CTA, FAQ, הוכחות והתנגדויות</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>חשיבת פאנל ממודעה ועד תשלום</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>מיתוג, עיצוב, היררכיה ותחושת פרימיום</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>בדיקות איכות, מובייל, אמון וביצועים</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>קטלוג תת־סקילים שמופעלים לפי המשימה</span></li>
+            </ul>
+          </div>
+          <aside class="checkout" aria-label="רכישת הסקיל">
+            <div>
+              <h3>Paid Ads CRO Super Skill</h3>
+              <p class="mini">חבילת סקילס אחת לבניית דפי נחיתה ופאנלים שמכוונים לרכישה.</p>
+            </div>
+            <div>
+              <div class="price-line"><span>מחיר</span><strong>579 ש״ח</strong></div>
+              <div class="price-line"><span>סוג</span><strong>סקיל דיגיטלי</strong></div>
+              <div class="price-line"><span>פעולת המרה</span><strong>רכישה / פנייה</strong></div>
+            </div>
+            <a
+              class="button primary"
+              href="https://wa.me/972534122548?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A7%D7%A0%D7%95%D7%AA%20%D7%90%D7%AA%20Paid%20Ads%20CRO%20Super%20Skill%20%D7%91%D6%BE579%20%D7%A9%D7%B4%D7%97"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              קנה עכשיו ב־579 ש״ח
+            </a>
+            <p class="mini">
+              אין כאן הבטחת “100% המרה”. יש כאן מערכת שנבנתה כדי למקסם סיכוי המרה עם קופי,
+              הצעה, עיצוב, אמון ובדיקות.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <div class="section-kicker">שאלות שמבקר חכם שואל לפני תשלום</div>
+            <h2>הדף עונה להתנגדויות לפני שהן עוצרות את הרכישה.</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>האם הסקיל באמת מבטיח שכל דף ימכור?</summary>
+              <p>
+                לא. מי שמבטיח 100% המרה לכל קהל ולכל מוצר לא אומר אמת. הסקיל בנוי למקסם את הסיכוי
+                להמרה באמצעות הצעה חדה, קופי מדויק, עיצוב אמין, הפחתת חיכוך ושיפור מתמשך.
+              </p>
+            </details>
+            <details>
+              <summary>למי זה מתאים?</summary>
+              <p>
+                למי שבונה דפי נחיתה, מוכר שירותים, קורסים, מוצרים דיגיטליים, SaaS, פאנלים,
+                מודעות או עמודים שצריכים לגרום לאנשים לעשות פעולה.
+              </p>
+            </details>
+            <details>
+              <summary>מה הופך את הדף הזה להוכחה?</summary>
+              <p>
+                הסקיל השתמש כאן במבנה שהוא עצמו ממליץ עליו: hook מטא, הוכחת מוצר, מנגנון,
+                offer stack, price anchoring, טיפול בהתנגדויות ו־CTA ברור.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="wrap">
+          <div class="section-kicker">עכשיו ההחלטה פשוטה</div>
+          <h2>או שאתה ממשיך לבנות דפי נחיתה לפי תחושה, או שאתה נותן לסקיל שנבנה לזה לעבוד איתך.</h2>
+          <p>
+            הדף הזה הוא הדגמה חיה: מוצר שמוכר את עצמו, עם קופי, עיצוב, פאנל, מחיר,
+            התנגדויות וקריאה לפעולה במקום אחד.
+          </p>
+          <a
+            class="button primary"
+            href="https://wa.me/972534122548?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A7%D7%A0%D7%95%D7%AA%20%D7%90%D7%AA%20Paid%20Ads%20CRO%20Super%20Skill%20%D7%91%D6%BE579%20%D7%A9%D7%B4%D7%97"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            אני רוצה את הסקיל
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        נבנה על ידי Paid Ads CRO Super Skill. אייקונים: Font Awesome Free דרך cdnjs. תמונות: יצירה מקורית ב־AI.
+      </div>
+    </footer>
+  </body>
+</html>
